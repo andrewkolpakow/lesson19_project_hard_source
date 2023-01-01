@@ -20,9 +20,11 @@ class UserService:
         return self.dao.get_by_username(username)
 
     def create(self, user_d):
+        user_d["password"] = self.make_password_hash(user_d.get("password"))
         return self.dao.create(user_d)
 
     def update(self, user_d):
+        user_d["password"] = self.make_password_hash(user_d.get("password"))
         self.dao.update(user_d)
         return self.dao
 
