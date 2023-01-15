@@ -22,9 +22,8 @@ class UsersView(Resource):
 class UserView(Resource):
     def get(self, rid):
         user = user_service.get_one(rid)
-        result = UserSchema.dump(user)
+        result = UserSchema().dump(user)
         return result, 200
-
     def patch(self, rid):
         request_json = request.json
         if "id" not in request_json:

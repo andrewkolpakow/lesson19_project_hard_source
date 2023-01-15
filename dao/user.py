@@ -30,7 +30,7 @@ class UserDAO:
     def update(self, user_d):
         user = self.get_one(user_d.get("id"))
 
-        for k,v in user_d.items():
+        for k, v in user_d.items():
             setattr(user, k, v)
 
 

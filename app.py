@@ -26,19 +26,7 @@ def register_extensions(app):
     api.add_namespace(movie_ns)
     api.add_namespace(user_ns)
     api.add_namespace(auth_ns)
-    create_data(app, db)
 
-def create_data(app, db):
-    with app.app_context():
-        db.create_all()
-
-        u2 = User(username="oleg", password="qwerty", role="user")
-        u3 = User(username="oleg", password="P@ssw0rd", role="admin")
-
-        with db.session.begin():
-            db.session.add_all([u2, u3])
-
-'''Добавляем пользователей в БД, таблица User'''
 
 app = create_app(Config())
 app.debug = True

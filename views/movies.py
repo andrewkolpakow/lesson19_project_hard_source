@@ -2,6 +2,7 @@ from flask import request
 from flask_restx import Resource, Namespace
 
 from dao.model.movie import MovieSchema
+from decorators import auth_required
 from implemented import movie_service
 
 movie_ns = Namespace('movies')
@@ -9,6 +10,7 @@ movie_ns = Namespace('movies')
 
 @movie_ns.route('/')
 class MoviesView(Resource):
+#    @auth_required '''Декаоратор для авторизации'''
     def get(self):
         status = request.args.get("status")
         page = request.args.get("page")
